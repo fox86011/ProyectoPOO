@@ -7,21 +7,28 @@ package vista;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JDesktopPane;
 
 /**
  *
  * @author ediso
  */
 public class FrmMenu extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form FrmMenu
      */
+    public static JDesktopPane jDesktopPane_menu;
+            
     public FrmMenu() {
         initComponents();
         this.setSize(new Dimension(1200, 700));
         this.setLocationRelativeTo(null);
         this.setTitle("REGISTRO_CANCHAS");
+        
+        this.setLayout(null);
+        jDesktopPane_menu = new JDesktopPane();
+        
     }
     public Image getIconImage(){
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/pelota-de-futbol.png"));
