@@ -301,6 +301,10 @@ public class FrmLogin extends javax.swing.JFrame {
             if (controlUsuario.loginUser(usuario)) {
                 // Si la autenticación es exitosa, redirige al usuario a la siguiente pantalla o realiza alguna otra acción
                 JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
+                this.dispose();
+                FrmMenu menu = new FrmMenu();
+                menu.setVisible(true);
+                this.dispose();
                 // Aquí puedes agregar código para cambiar de pantalla o realizar otras acciones
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
