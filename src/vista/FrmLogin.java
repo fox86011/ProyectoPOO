@@ -192,9 +192,9 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel8)
                 .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,6 +301,10 @@ public class FrmLogin extends javax.swing.JFrame {
             if (controlUsuario.loginUser(usuario)) {
                 // Si la autenticación es exitosa, redirige al usuario a la siguiente pantalla o realiza alguna otra acción
                 JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
+                this.dispose();
+                FrmMenu menu = new FrmMenu();
+                menu.setVisible(true);
+                this.dispose();
                 // Aquí puedes agregar código para cambiar de pantalla o realizar otras acciones
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
