@@ -14,23 +14,27 @@ import javax.swing.JDesktopPane;
  * @author ediso
  */
 public class FrmMenu extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form FrmMenu
      */
     public static JDesktopPane jDesktopPane_menu;
-            
+
     public FrmMenu() {
         initComponents();
         this.setSize(new Dimension(1200, 700));
         this.setLocationRelativeTo(null);
         this.setTitle("REGISTRO_CANCHAS");
-        
+
         this.setLayout(null);
         jDesktopPane_menu = new JDesktopPane();
-        
+        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        this.jDesktopPane_menu.setBounds(0, 0, ancho, (alto - 110));
+        this.add(jDesktopPane_menu);
     }
-    public Image getIconImage(){
+
+    public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/pelota-de-futbol.png"));
         return retValue;
     }
@@ -56,7 +60,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem_nuevo_cliente = new javax.swing.JMenuItem();
         jMenuItem_gestion_cliente = new javax.swing.JMenuItem();
         jMenu_nueva_categoria = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem_nueva_categoria = new javax.swing.JMenuItem();
         jMenuItem_gestion_categorias = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem_nueva_venta = new javax.swing.JMenuItem();
@@ -142,9 +146,14 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu_nueva_categoria.setText("CATEGORIA");
         jMenu_nueva_categoria.setPreferredSize(new java.awt.Dimension(120, 50));
 
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/opciones.png"))); // NOI18N
-        jMenuItem8.setText("Nueva Categoria");
-        jMenu_nueva_categoria.add(jMenuItem8);
+        jMenuItem_nueva_categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/opciones.png"))); // NOI18N
+        jMenuItem_nueva_categoria.setText("Nueva Categoria");
+        jMenuItem_nueva_categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_nueva_categoriaActionPerformed(evt);
+            }
+        });
+        jMenu_nueva_categoria.add(jMenuItem_nueva_categoria);
 
         jMenuItem_gestion_categorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/opciones.png"))); // NOI18N
         jMenuItem_gestion_categorias.setText("Gestion Categorias");
@@ -243,6 +252,13 @@ public class FrmMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem_reportes_productosActionPerformed
 
+    private void jMenuItem_nueva_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nueva_categoriaActionPerformed
+        // TODO add your handling code here:
+        InterCategoria interCategoria = new InterCategoria();
+        jDesktopPane_menu.add(interCategoria);
+        interCategoria.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_nueva_categoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -287,7 +303,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem_actualizar_stock;
     private javax.swing.JMenuItem jMenuItem_gestion_categorias;
     private javax.swing.JMenuItem jMenuItem_gestion_cliente;
@@ -295,6 +310,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_gestion_usuario;
     private javax.swing.JMenuItem jMenuItem_gestion_ventas;
     private javax.swing.JMenuItem jMenuItem_historial;
+    private javax.swing.JMenuItem jMenuItem_nueva_categoria;
     private javax.swing.JMenuItem jMenuItem_nueva_venta;
     private javax.swing.JMenuItem jMenuItem_nuevo_cliente;
     private javax.swing.JMenuItem jMenuItem_nuevo_producto;
