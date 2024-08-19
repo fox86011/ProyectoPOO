@@ -135,7 +135,7 @@ public class InterCategoria extends javax.swing.JInternalFrame {
 
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "La Categoria ya esta registrada en ka Base de Datos");
+                JOptionPane.showMessageDialog(null, "La Categoria ya esta registrada en la Base de Datos");
             }
         }
 

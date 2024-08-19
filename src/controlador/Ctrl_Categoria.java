@@ -42,7 +42,7 @@ public class Ctrl_Categoria {
 
     public boolean existeCategoria(String categoria) {
         boolean respuesta = false;
-        String sql = "select descripcion from tb_categoria where descripcion = '"+categoria+"';";
+        String sql = "select descripcion from tb_categoria where descripcion = '" + categoria + "';";
         Statement st;
 
         try {
@@ -57,6 +57,41 @@ public class Ctrl_Categoria {
             System.out.println("Error al consultar categoria: " + e);
         }
 
+        return respuesta;
+    }
+
+    public boolean actualizar(Categoria objeto, int idCategoria) {
+        boolean respuesta = false;
+
+        Connection cn = conexion.Conexion.conectar();
+        try {
+            PreparedStatement consulta = cn.prepareStatement("update tb_categoria set descripcion = ? where idCategoria = '" + idCategoria + "'");
+            consulta.setString(1, objeto.getDescripcion());
+
+            if (consulta.executeUpdate() > 0) {
+                respuesta = true;
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar categoría: " + e);
+        }
+        return respuesta;
+    }
+    public boolean eliminar(int idCategoria) {
+        boolean respuesta = false;
+
+        Connection cn = conexion.Conexion.conectar();
+        try {
+            PreparedStatement consulta = cn.prepareStatement("delete from tb_categoria where idCategoria = '" + idCategoria + "'");
+            consulta.executeUpdate();
+
+            if (consulta.executeUpdate() > 0) {
+                respuesta = true;
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar categoría: " + e);
+        }
         return respuesta;
     }
 }
