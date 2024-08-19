@@ -37,7 +37,6 @@ public class InterCategoria extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setResizable(true);
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 0));
 

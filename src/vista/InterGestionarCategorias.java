@@ -4,13 +4,29 @@
  */
 package vista;
 
+import conexion.Conexion;
+import controlador.Ctrl_Categoria;
 import java.awt.Dimension;
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import modelo.Usuario;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import modelo.Categoria;
 
 /**
  *
  * @author ediso
  */
 public class InterGestionarCategorias extends javax.swing.JInternalFrame {
+
+    private int idCategoria;
 
     /**
      * Creates new form InterGestionarCategorias
@@ -19,6 +35,7 @@ public class InterGestionarCategorias extends javax.swing.JInternalFrame {
         initComponents();
         this.setSize(new Dimension(600, 400));
         this.setTitle("Gestionar Categorias");
+        this.CargarTablaCategorias();
     }
 
     /**
@@ -40,11 +57,10 @@ public class InterGestionarCategorias extends javax.swing.JInternalFrame {
         jButton_eliminar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField_descripcion = new javax.swing.JTextField();
+        txt_descripcion = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
-        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
@@ -96,6 +112,11 @@ public class InterGestionarCategorias extends javax.swing.JInternalFrame {
         });
 
         jButton_eliminar.setText("Eliminar");
+        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_eliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -137,7 +158,7 @@ public class InterGestionarCategorias extends javax.swing.JInternalFrame {
                 .addContainerGap(39, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField_descripcion)
+                .addComponent(txt_descripcion)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -146,7 +167,7 @@ public class InterGestionarCategorias extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -159,7 +180,41 @@ public class InterGestionarCategorias extends javax.swing.JInternalFrame {
 
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
         // TODO add your handling code here:
+        if (!txt_descripcion.getText().isEmpty()) {
+            Categoria categoria = new Categoria();
+            Ctrl_Categoria controlCategoria = new Ctrl_Categoria();
+
+            categoria.setDescripcion(txt_descripcion.getText().trim());
+            if (controlCategoria.actualizar(categoria, idCategoria)) {
+                JOptionPane.showMessageDialog(null, "Categoria Actulizada");
+                txt_descripcion.setText("");
+                this.CargarTablaCategorias();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar Categoria");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una categoria");
+        }
     }//GEN-LAST:event_jButton_actualizarActionPerformed
+
+    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
+        // TODO add your handling code here:
+         if (!txt_descripcion.getText().isEmpty()) {
+            Categoria categoria = new Categoria();
+            Ctrl_Categoria controlCategoria = new Ctrl_Categoria();
+
+            categoria.setDescripcion(txt_descripcion.getText().trim());
+            if (!controlCategoria.eliminar(idCategoria)) {
+                JOptionPane.showMessageDialog(null, "Categoria Eliminada");
+                txt_descripcion.setText("");
+                this.CargarTablaCategorias();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Eliminar Categoria");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una categoria");
+        }
+    }//GEN-LAST:event_jButton_eliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -168,11 +223,66 @@ public class InterGestionarCategorias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    public static javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_categorias;
-    private javax.swing.JTextField jTextField_descripcion;
+    public static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JTable jTable_categorias;
+    private javax.swing.JTextField txt_descripcion;
     // End of variables declaration//GEN-END:variables
+    private void CargarTablaCategorias() {
+        Connection con = Conexion.conectar();
+        DefaultTableModel model = new DefaultTableModel();
+        String sql = "select idCategoria, descripcion, estado from tb_categoria";
+        Statement st;
+        try {
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            InterGestionarCategorias.jTable_categorias = new JTable(model);
+            InterGestionarCategorias.jScrollPane1.setViewportView(InterGestionarCategorias.jTable_categorias);
+
+            model.addColumn("idCategoria");
+            model.addColumn("descripcion");
+            model.addColumn("estado");
+
+            while (rs.next()) {
+                Object fila[] = new Object[3];
+                for (int i = 0; i < 3; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al llenar la tabla categorias: " + e);
+        }
+       
+        jTable_categorias.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila_point = jTable_categorias.rowAtPoint(e.getPoint());
+                int columna_point = 0;
+
+                if (fila_point > -1) {
+                    idCategoria = (int) model.getValueAt(fila_point, columna_point);
+                    EnviarDatosCategoriaSeleccionada(idCategoria);
+                }
+            }
+        });
+    }
+
+     private void EnviarDatosCategoriaSeleccionada(int idCategoria) {
+        try {
+            Connection con = Conexion.conectar();
+            PreparedStatement pst = con.prepareStatement(
+                    "select * from tb_categoria where idCategoria = '" + idCategoria + "'");
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                txt_descripcion.setText(rs.getString("descripcion"));
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al seleccionar categoria: " + e);
+        }
+    }
 }

@@ -60,6 +60,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nuevo Producto"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_nuevo_productoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_gestion_producto">
               <Properties>
@@ -68,6 +71,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gestion Producto"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_gestion_productoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_actualizar_stock">
               <Properties>
@@ -76,6 +82,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Actualizar Stock"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_actualizar_stockActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -97,6 +106,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nuevo Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_nuevo_clienteActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_gestion_cliente">
               <Properties>
@@ -122,23 +134,16 @@
             </Property>
           </Properties>
           <SubComponents>
-<<<<<<< HEAD
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_nueva_categoria">
-=======
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
->>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Imagenes/opciones.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nueva Categoria"/>
               </Properties>
-<<<<<<< HEAD
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_nueva_categoriaActionPerformed"/>
               </Events>
-=======
->>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_gestion_categorias">
               <Properties>
@@ -171,6 +176,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nueva Venta"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_nueva_ventaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_gestion_ventas">
               <Properties>
@@ -179,6 +187,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gestion Ventas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_gestion_ventasActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -269,6 +280,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cerrar Sesion"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_salirActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
