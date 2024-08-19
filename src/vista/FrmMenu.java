@@ -14,17 +14,26 @@ import javax.swing.JDesktopPane;
  * @author ediso
  */
 public class FrmMenu extends javax.swing.JFrame {
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
     /**
      * Creates new form FrmMenu
      */
     public static JDesktopPane jDesktopPane_menu;
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
     public FrmMenu() {
         initComponents();
         this.setSize(new Dimension(1200, 700));
         this.setLocationRelativeTo(null);
         this.setTitle("REGISTRO_CANCHAS");
+<<<<<<< HEAD
 
         this.setLayout(null);
         jDesktopPane_menu = new JDesktopPane();
@@ -35,6 +44,14 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     public Image getIconImage() {
+=======
+        
+        this.setLayout(null);
+        jDesktopPane_menu = new JDesktopPane();
+        
+    }
+    public Image getIconImage(){
+>>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/pelota-de-futbol.png"));
         return retValue;
     }
@@ -60,7 +77,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem_nuevo_cliente = new javax.swing.JMenuItem();
         jMenuItem_gestion_cliente = new javax.swing.JMenuItem();
         jMenu_nueva_categoria = new javax.swing.JMenu();
+<<<<<<< HEAD
         jMenuItem_nueva_categoria = new javax.swing.JMenuItem();
+=======
+        jMenuItem8 = new javax.swing.JMenuItem();
+>>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
         jMenuItem_gestion_categorias = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem_nueva_venta = new javax.swing.JMenuItem();
@@ -146,6 +167,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu_nueva_categoria.setText("CATEGORIA");
         jMenu_nueva_categoria.setPreferredSize(new java.awt.Dimension(120, 50));
 
+<<<<<<< HEAD
         jMenuItem_nueva_categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/opciones.png"))); // NOI18N
         jMenuItem_nueva_categoria.setText("Nueva Categoria");
         jMenuItem_nueva_categoria.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +176,11 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenu_nueva_categoria.add(jMenuItem_nueva_categoria);
+=======
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/opciones.png"))); // NOI18N
+        jMenuItem8.setText("Nueva Categoria");
+        jMenu_nueva_categoria.add(jMenuItem8);
+>>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
 
         jMenuItem_gestion_categorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/opciones.png"))); // NOI18N
         jMenuItem_gestion_categorias.setText("Gestion Categorias");
@@ -246,15 +273,19 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItem_gestion_categoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gestion_categoriasActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         InterGestionarCategorias interGestionarCategoria = new InterGestionarCategorias();
         jDesktopPane_menu.add(interGestionarCategoria);
         interGestionarCategoria.setVisible(true);
+=======
+>>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
     }//GEN-LAST:event_jMenuItem_gestion_categoriasActionPerformed
 
     private void jMenuItem_reportes_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_productosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem_reportes_productosActionPerformed
 
+<<<<<<< HEAD
     private void jMenuItem_nueva_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nueva_categoriaActionPerformed
         // TODO add your handling code here:
         InterCategoria interCategoria = new InterCategoria();
@@ -262,6 +293,8 @@ public class FrmMenu extends javax.swing.JFrame {
         interCategoria.setVisible(true);
     }//GEN-LAST:event_jMenuItem_nueva_categoriaActionPerformed
 
+=======
+>>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
     /**
      * @param args the command line arguments
      */
@@ -306,6 +339,10 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
+<<<<<<< HEAD
+=======
+    private javax.swing.JMenuItem jMenuItem8;
+>>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
     private javax.swing.JMenuItem jMenuItem_actualizar_stock;
     private javax.swing.JMenuItem jMenuItem_gestion_categorias;
     private javax.swing.JMenuItem jMenuItem_gestion_cliente;
@@ -313,7 +350,10 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_gestion_usuario;
     private javax.swing.JMenuItem jMenuItem_gestion_ventas;
     private javax.swing.JMenuItem jMenuItem_historial;
+<<<<<<< HEAD
     private javax.swing.JMenuItem jMenuItem_nueva_categoria;
+=======
+>>>>>>> 5572df9aca9d7071f28f810c583cbd365059a2b8
     private javax.swing.JMenuItem jMenuItem_nueva_venta;
     private javax.swing.JMenuItem jMenuItem_nuevo_cliente;
     private javax.swing.JMenuItem jMenuItem_nuevo_producto;
